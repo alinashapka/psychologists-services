@@ -1,0 +1,78 @@
+.container {
+  padding: 0 128px;
+}
+.nav {
+  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 24px 0;
+}
+.logo {
+  margin-right: 130px;
+}
+.navList {
+  display: flex;
+  gap: 40px;
+  margin-right: auto;
+}
+.link {
+  position: relative;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #54be96;
+  border-radius: 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.link.active::after {
+  opacity: 1;
+}
+.authWrapper {
+  display: flex;
+  align-items: baseline;
+}
+.userInfo {
+  display: flex;
+}
+.icon {
+}
+.username {
+  font-weight: var(--font-weight-medium);
+}
+.logoutBtn {
+  color: var(--color-text);
+  border-radius: 30px;
+  padding: 14px 39px;
+  width: 135px;
+  height: 48px;
+  margin-left: 28px;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+}
+.loginBtn {
+  color: var(--color-text);
+  border-radius: 30px;
+  padding: 14px 39px;
+  width: 124px;
+  height: 48px;
+  margin-right: 8px;
+  border: 1px solid rgba(25, 26, 21, 0.2);
+}
+.registerBtn {
+  border-radius: 30px;
+  padding: 14px 40px;
+  width: 171px;
+  height: 48px;
+  background-color: var(--bg-color-btn);
+  transition: background-color 300ms ease;
+}
+.registerBtn:hover {
+  background: #36a379;
+}

@@ -1,7 +1,10 @@
 .logo {
 }
 .text {
-  color: #191a15;
+font-weight: var(--font-weight-bold);
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
 }
 .accent {
   color: #54be96;

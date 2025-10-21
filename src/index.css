@@ -16,7 +16,7 @@
 
     /* Backgrounds */
     --bg-color-btn: #54be96;
-    --bg-color-white: #C8C1C1;
+    --bg-color-white: #FBFBFB;
 }
 
 html,
@@ -36,6 +36,7 @@ html {
 body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
+    color: var(--color-text);
     line-height: 1.25;
     margin: 0;
     height: 100%;
@@ -92,6 +93,8 @@ a {
 
 button {
     font-family: inherit;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: -0.01em;
     background-color: var(--bg-color-btn);
     color: var(--color-text-btn);
     cursor: pointer;
