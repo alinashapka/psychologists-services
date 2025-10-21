@@ -1,7 +1,7 @@
 import css from "./FavoritesPage.module.css";
 
 function FavoritesPage() {
-    return(<h1>Favorites Page</h1>)
+  return <h1>Favorites Page</h1>;
 }
 
-export default FavoritesPage
+export default FavoritesPage;
