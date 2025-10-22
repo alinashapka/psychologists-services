@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { auth } from "../../firebase/config";
+import { auth } from "../../services/firebase";
 import {
   createUserWithEmailAndPassword,
   updateProfile,
@@ -57,21 +57,18 @@ export const logoutUser = createAsyncThunk("auth/logoutUser", async () => {
   await signOut(auth);
 });
 
-export const checkAuthState = createAsyncThunk(
-  "auth/checkAuthState",
-  async () => {
-    return new Promise((resolve) => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          resolve({
-            uid: user.uid,
-            email: user.email,
-            name: user.displayName || "",
-          });
-        } else {
-          resolve(null);
-        }
-      });
+export const refreshUser = createAsyncThunk("auth/refreshUser", async () => {
+  return new Promise((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        resolve({
+          uid: user.uid,
+          email: user.email,
+          name: user.displayName || "",
+        });
+      } else {
+        resolve(null);
+      }
     });
-  }
-);
+  });
+});
