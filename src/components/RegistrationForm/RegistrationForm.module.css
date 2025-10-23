@@ -26,8 +26,6 @@
   flex-direction: column;
   gap: 18px;
 }
-.wrapper {
-}
 .input {
   width: 438px;
   border: 1px solid rgba(25, 26, 21, 0.1);

@@ -1,16 +1,18 @@
+import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
+import { selectIsLoading, selectIsLoggedIn } from "../../redux/auth/selectors";
+import Loader from "../Loader/Loader";
 
 const ProtectedRoute = ({ children }) => {
   const location = useLocation();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoading = useSelector(selectIsLoading);
 
-  // Check if user is authenticated
-  const isAuthenticated = () => {
-    // Placeholder - replace with actual auth check
-    const user = localStorage.getItem("user");
-    return !!user;
-  };
+  if (isLoading) {
+    return <Loader />;
+  }
 
-  if (!isAuthenticated()) {
+  if (!isLoggedIn) {
     // Redirect to home with state indicating auth is needed
     return (
       <Navigate

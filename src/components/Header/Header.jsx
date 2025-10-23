@@ -3,10 +3,12 @@ import { useState } from "react";
 import Logo from "../Logo/Logo";
 import clsx from "clsx";
 import css from "./Header.module.css";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
 
 function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const user = useSelector(selectUser);
 
   const buildLinkClass = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
@@ -37,7 +39,9 @@ function Header() {
               <>
                 <div className={css.userInfo}>
                   <span className={css.icon}>👤</span>
-                  <span className={css.username}>{username}</span>
+                  <span className={css.username}>
+                    {user?.displayName || user?.email || "User"}
+                  </span>
                 </div>
                 <button className={css.logoutBtn}>Log out</button>
               </>
