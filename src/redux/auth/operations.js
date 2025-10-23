@@ -17,17 +17,17 @@ export const registerUser = createAsyncThunk(
         email,
         password
       );
+
       await updateProfile(userCredentials.user, { displayName: name });
-      console.log("User created:", userCredentials.user, {
-        displayName: name,
-      });
+      await auth.currentUser.reload();
+
       return {
         uid: userCredentials.user.uid,
         email: userCredentials.user.email,
         name,
       };
     } catch (error) {
-      rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -44,11 +44,12 @@ export const loginUser = createAsyncThunk(
       const user = userCredentials.user;
       return {
         uid: user.uid,
-        email: user.uid,
+        email: user.email,
         name: user.displayName || "",
       };
     } catch (error) {
-      rejectWithValue(error.message);
+      const message = "Login failed. Please try again.";
+      return rejectWithValue(message);
     }
   }
 );

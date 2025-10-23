@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
 import { registerUser } from "../../redux/auth/operations";
+import { toast } from "react-toastify";
 import css from "./RegistrationForm.module.css";
 
 const schema = yup
@@ -16,7 +17,7 @@ const schema = yup
   })
   .required();
 
-function RegistrationForm() {
+function RegistrationForm({ onSuccess }) {
   const {
     register,
     handleSubmit,
@@ -27,21 +28,26 @@ function RegistrationForm() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    dispatch(
-      registerUser({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-      })
-    );
-    console.log("Form submitted:", data);
+  const onSubmit = async (data) => {
+    try {
+      await dispatch(
+        registerUser({
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        })
+      ).unwrap();
+      onSuccess();
+      toast.success("Registration successful!");
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
   };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={css.title}>Registration</h2>
-      <p>X</p>
+      {/* <p>X</p> */}
       <p className={css.text}>
         Thank you for your interest in our platform! In order to register, we
         need some information. Please provide us with the following information.

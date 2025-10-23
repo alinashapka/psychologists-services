@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
 import { loginUser } from "../../redux/auth/operations";
+import { toast } from "react-toastify";
 import css from "./LoginForm.module.css";
 
 const schema = yup
@@ -15,7 +16,7 @@ const schema = yup
   })
   .required();
 
-function LoginForm() {
+function LoginForm({ onSuccess }) {
   const {
     register,
     handleSubmit,
@@ -26,20 +27,25 @@ function LoginForm() {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    dispatch(
-      loginUser({
-        email: data.email,
-        password: data.password,
-      })
-    );
-    console.log("Form submitted:", data);
+  const onSubmit = async (data) => {
+    try {
+      await dispatch(
+        loginUser({
+          email: data.email,
+          password: data.password,
+        })
+      ).unwrap();
+      onSuccess();
+      toast.success("Successfully logged in!");
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={css.title}>Log In</h2>
-      <p>X</p>
+      {/* <p>X</p> */}
       <p className={css.text}>
         Welcome back! Please enter your credentials to access your account and
         continue your search for a psychologist.

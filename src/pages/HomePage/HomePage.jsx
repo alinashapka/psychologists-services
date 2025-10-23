@@ -5,7 +5,6 @@ function HomePage() {
   return (
     <div className={css.container}>
       <h1>Home Page</h1>
-      <RegistrationForm />
     </div>
   );
 }

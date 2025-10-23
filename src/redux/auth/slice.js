@@ -19,7 +19,7 @@ const authSlice = createSlice({
       .addCase(registerUser.pending, handlePending)
       .addCase(registerUser.fulfilled, (state, action) => {
         state.user = {
-          name: action.payload.displayName || null,
+          name: action.payload.name,
           email: action.payload.email,
         };
         state.isLoggedIn = true;
@@ -29,7 +29,7 @@ const authSlice = createSlice({
       .addCase(loginUser.pending, handlePending)
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = {
-          name: action.payload.displayName || null,
+          name: action.payload.name,
           email: action.payload.email,
         };
         state.isLoggedIn = true;

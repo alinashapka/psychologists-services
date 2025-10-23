@@ -3,6 +3,8 @@ import { lazy, Suspense } from "react";
 import Layout from "../Layout/Layout";
 import Loader from "../Loader/Loader";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
@@ -33,6 +35,11 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          style={{ zIndex: 10001 }}
+        />
       </Suspense>
     </div>
   );
