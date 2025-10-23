@@ -1,0 +1,138 @@
+.container {
+  height: 100%;
+  padding: 0 128px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.textBlock {
+  max-width: 50%;
+}
+.title {
+  max-width: 585px;
+  margin-top: 126px;
+  font-weight: var(--font-weight-semibold);
+  font-size: 80px;
+  line-height: 102%;
+  letter-spacing: -0.02em;
+}
+.accent {
+  font-style: italic;
+  color: #54be96;
+}
+.text {
+  max-width: 510px;
+  margin-top: 20px;
+  font-weight: var(--font-weight-medium);
+  font-size: 18px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+}
+.button {
+  margin-top: 40px;
+  border-radius: 30px;
+  width: 235px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-weight: var(--font-weight-medium);
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  background: var(--bg-color-btn);
+  transition: background-color 300ms ease;
+}
+.button:hover {
+  background: #36a379;
+}
+.arrow {
+  font-size: 28px;
+  color: #fbfbfb;
+}
+.imageBlock {
+  .imageWrapper {
+    position: relative;
+    width: 50%;
+  }
+}
+.image {
+  margin-top: 78px;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+}
+.icon1,
+.icon2,
+.icon3 {
+  position: absolute;
+}
+/* example positions */
+.icon1 {
+  border-radius: 20px;
+  background: #54be96;
+  padding: 32px;
+  display: flex;
+  gap: 16px;
+  top: 63.38%;
+  right: 26.53%;
+}
+.icon2 {
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  background: #4535af;
+  transform: rotate(15deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 44.88%;
+  right: 40.42%;
+}
+.icon3 {
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  background: #fbc75e;
+  /* padding: 17.51px; */
+  transform: rotate(-15deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 26.5%;
+  right: 5.83%;
+}
+.checkWrap {
+  border-radius: 13px;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fbfbfb;
+}
+.check {
+  color: #54be96;
+  fill: #54be96;
+}
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.checkText {
+  font-weight: var(--font-weight-regular);
+  font-size: 14px;
+  color: rgba(251, 251, 251, 0.5);
+}
+.checkNumb {
+  font-weight: var(--font-weight-bold);
+  font-size: 24px;
+  color: #fbfbfb;
+}
+.question {
+}
+.users {
+}
