@@ -25,25 +25,32 @@ function HomePage() {
       </div>
 
       <div className={css.imageBlock}>
-        <img
-          src="/src/assets/hero.jpg"
-          className={css.image}
-          alt="Psychologist"
-        />
-        <div className={css.icon1}>
-          <div className={css.checkWrap}>
-            <Icon className={css.check} id="check" size={30} />
+        <div className={css.imageWrapper}>
+          <img
+            src="/src/assets/hero.jpg"
+            className={css.image}
+            alt="Psychologist"
+          />
+          <div className={css.icon1}>
+            <div className={css.checkWrap}>
+              <Icon className={css.check} id="check" size={30} />
+            </div>
+            <div className={css.textWrap}>
+              <p className={css.checkText}>Experienced psychologists</p>
+              <p className={css.checkNumb}>15,000</p>
+            </div>
           </div>
-          <div className={css.textWrap}>
-            <p className={css.checkText}>Experienced psychologists</p>
-            <p className={css.checkNumb}>15,000</p>
+          <div className={css.icon2}>
+            <Icon
+              className={css.question}
+              id="question"
+              width={10}
+              height={17}
+            />
           </div>
-        </div>
-        <div className={css.icon2}>
-          <Icon className={css.question} id="question" widht={10} height={17} />
-        </div>
-        <div className={css.icon3}>
-          <Icon className={css.users} id="users" size={19.84} />
+          <div className={css.icon3}>
+            <Icon className={css.users} id="users" size={19.84} />
+          </div>
         </div>
       </div>
     </div>

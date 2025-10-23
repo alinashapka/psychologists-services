@@ -9,6 +9,7 @@ import { logoutUser } from "../../redux/auth/operations";
 import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import Icon from "../Icon/Icon";
 
 function Header() {
   const dispatch = useDispatch();
@@ -55,7 +56,9 @@ function Header() {
               {isLoggedIn ? (
                 <>
                   <div className={css.userInfo}>
-                    <span className={css.icon}>👤</span>
+                    <div className={css.iconWrap}>
+                      <Icon id="user" size={24} className={css.icon} />
+                    </div>
                     <span className={css.username}>
                       {user?.name || user?.email || "User"}
                     </span>

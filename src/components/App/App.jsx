@@ -18,7 +18,7 @@ const NotFoundPage = lazy(() =>
 
 function App() {
   return (
-    <div>
+    <>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -41,7 +41,7 @@ function App() {
           style={{ zIndex: 10001 }}
         />
       </Suspense>
-    </div>
+    </>
   );
 }
 
