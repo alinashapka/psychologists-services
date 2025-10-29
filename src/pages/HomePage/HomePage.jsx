@@ -28,6 +28,7 @@ function HomePage() {
         <div className={css.imageWrapper}>
           <img
             src="/src/assets/hero.jpg"
+            srcSet="/src/assets/hero.jpg 1x, /src/assets/hero@2x.jpg 2x"
             className={css.image}
             alt="Psychologist"
           />
