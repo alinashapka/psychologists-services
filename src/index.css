@@ -101,7 +101,6 @@ button {
   color: var(--color-text-btn);
   cursor: pointer;
   border: none;
-  background: none;
   padding: 0;
 }
 

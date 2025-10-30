@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Icon from "../Icon/Icon";
 import css from "./PsychCard.module.css";
 
 function PsychCard({
@@ -21,64 +22,78 @@ function PsychCard({
 
   return (
     <div className={css.card}>
-      <img src={avatar_url} alt={name} className={css.avatar} />
+      <div className={css.avatarWrapper}>
+        <img src={avatar_url} alt={name} className={css.avatar} />
+      </div>
 
       <div className={css.info}>
-        <span className={css.label}>Psychologist</span>
+        <p className={css.label}>Psychologist</p>
         <h2 className={css.name}>{name}</h2>
 
-        <div className={css.details}>
-          <p>
+        <ul className={css.details}>
+          <li className={css.text}>
             Experience: <span className={css.accent}>{experience}</span>
-          </p>
-          <p className={css.text}>
+          </li>
+          <li className={css.text}>
             License: <span className={css.accent}>{license}</span>
-          </p>
-          <p className={css.text}>
+          </li>
+          <li className={css.text}>
             Specialization: <span className={css.accent}>{specialization}</span>
-          </p>
-          <p className={css.text}>
+          </li>
+          <li className={css.text}>
             Initial consultation:{" "}
             <span className={css.accent}>{initial_consultation}</span>
-          </p>
-        </div>
+          </li>
+        </ul>
 
         <p className={css.about}>{about}</p>
 
-        <button className={css.readMoreBtn} onClick={toggleReadMore}>
-          {isExpanded ? "Show less" : "Read more"}
-        </button>
+        {!isExpanded && (
+          <button className={css.readMoreBtn} onClick={toggleReadMore}>
+            Read more
+          </button>
+        )}
 
         {/* Reviews shown only when expanded */}
         {isExpanded && reviews.length > 0 && (
-          <div className={css.reviews}>
-            {reviews.map((review, index) => (
-              <div key={index} className={css.review}>
-                <div className={css.reviewHeader}>
-                  <span className={css.reviewerInitial}>
-                    {review.reviewer.charAt(0)}
-                  </span>
-                  <div>
-                    <p className={css.reviewerName}>{review.reviewer}</p>
-                    <p className={css.rating}>⭐ {review.rating}</p>
+          <div className={css.reviewsContainer}>
+            <ul className={css.list}>
+              {reviews.map((review, index) => (
+                <li key={index} className={css.item}>
+                  <div className={css.reviewHeader}>
+                    <span className={css.reviewerInitial}>
+                      {review.reviewer.charAt(0)}
+                    </span>
+                    <div>
+                      <p className={css.reviewerName}>{review.reviewer}</p>
+                      <p className={css.reviewRating}>
+                        <Icon className={css.star} id="star" size={16} />{" "}
+                        {review.rating}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <p className={css.reviewComment}>{review.comment}</p>
-              </div>
-            ))}
+                  <p className={css.reviewComment}>{review.comment}</p>
+                </li>
+              ))}
+            </ul>
+            <button className={css.appointmentBtn}>Make an appointment</button>
           </div>
         )}
-
-        <button className={css.appointmentBtn}>Make an appointment</button>
       </div>
 
       <div className={css.meta}>
-        <p className={css.rating}>⭐ Rating: {rating}</p>
+        <p className={css.rating}>
+          {" "}
+          <Icon className={css.star} id="star" size={16} /> Rating: {rating}
+        </p>
+        <span className={css.line}>│</span>
         <p className={css.price}>
           Price / 1 hour:{" "}
           <span className={css.priceAmount}>${price_per_hour}</span>
         </p>
-        <button className={css.favoriteBtn}>❤️</button>
+        <button className={css.favoriteBtn}>
+          <Icon className={css.heart} id="heart" size={26} />
+        </button>
       </div>
     </div>
   );

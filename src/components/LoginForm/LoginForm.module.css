@@ -47,7 +47,6 @@
   padding: 16px 189px;
   width: 438px;
   height: 52px;
-  background: var(--bg-color-btn);
   transition: background-color 300ms ease;
 }
 .button:hover {

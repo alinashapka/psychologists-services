@@ -1,0 +1,29 @@
+.container {
+  padding: 0 128px;
+  padding-bottom: 100px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.item {
+}
+.loadMoreLoader {
+}
+.button {
+  margin-top: 64px;
+  border-radius: 30px;
+  padding: 14px 48px;
+  width: 176px;
+  height: 48px;
+  transition: background-color 300ms ease;
+}
+.button:hover {
+  background: #36a379;
+}
