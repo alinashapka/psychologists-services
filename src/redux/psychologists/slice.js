@@ -28,4 +28,5 @@ const psychologistsSlice = createSlice({
   },
 });
 
+export const { loadMore } = psychologistsSlice.actions;
 export default psychologistsSlice.reducer;

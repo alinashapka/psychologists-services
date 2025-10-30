@@ -6,15 +6,18 @@ export const fetchPsychologists = createAsyncThunk(
   "psychologists/fetchPsychologists",
   async (_, { rejectWithValue }) => {
     try {
-      const psychologistsRef = ref(database, "psychologists-app");
+      const psychologistsRef = ref(database);
       const snapshot = await get(psychologistsRef);
 
       if (snapshot.exists()) {
         const data = snapshot.val();
+        console.log("📦 Data:", data);
 
-        const psychologistsArray = Array.isArray(data)
-          ? data
-          : Object.values(data);
+        const psychologistsArray = Object.values(data).map((item, index) => ({
+          ...item,
+          id: index,
+        }));
+
         return psychologistsArray;
       } else {
         return [];

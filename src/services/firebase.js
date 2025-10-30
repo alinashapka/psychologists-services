@@ -7,6 +7,8 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyDr9C-xW1WesCbWwz5P7aQ4FEHIHc-Su0c",
   authDomain: "psychologists-app-c22b6.firebaseapp.com",
+  databaseURL:
+    "https://psychologists-app-c22b6-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "psychologists-app-c22b6",
   storageBucket: "psychologists-app-c22b6.firebasestorage.app",
   messagingSenderId: "482983677035",
