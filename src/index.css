@@ -104,6 +104,7 @@ button {
   padding: 0;
 }
 
-input {
+input,
+textarea {
   outline: none;
 }

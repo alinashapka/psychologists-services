@@ -1,0 +1,118 @@
+.form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+  border-radius: 30px;
+  width: 599px;
+  background: #fbfbfb;
+}
+.title {
+  text-align: left;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.text {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: rgba(25, 26, 21, 0.5);
+  margin-bottom: 40px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.input {
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 0 16px 18px;
+  box-sizing: border-box;
+}
+.input::placeholder {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: #191a15;
+}
+.wrapper {
+  display: flex;
+  gap: 8px;
+}
+.wrapper > .input {
+  width: calc(50% - 4px);
+  box-sizing: border-box;
+}
+.wrapper > .timeWrapper {
+  width: calc(50% - 4px);
+}
+.timeWrapper {
+  position: relative;
+}
+.timeWrapper .input {
+  width: 100%;
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+.icon {
+  position: absolute;
+  fill: none;
+  stroke: #191a15;
+  top: 16px;
+  right: 18px;
+  pointer-events: none;
+}
+.dropdown {
+  position: absolute;
+  box-sizing: border-box;
+  top: 58px;
+  left: 81px;
+  width: 151px;
+  height: 180px;
+  overflow-y: scroll;
+  border-radius: 12px;
+  background: #fff;
+  z-index: 10;
+}
+.dropdownTitle {
+  margin: 16px 34px 0 16px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  line-height: 150%;
+}
+.dropdownItem {
+  margin: 0 32px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  padding: 10px 16px;
+  cursor: pointer;
+  color: rgba(25, 26, 21, 0.3);
+}
+.dropdownItem:hover {
+  color: #191a15;
+}
+.textarea {
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 0 80px 18px;
+}
+.textarea::placeholder {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: #191a15;
+}
+.button {
+  margin-top: 24px;
+  border-radius: 30px;
+  padding: 16px 217px;
+  width: 472px;
+  height: 52px;
+  transition: background-color 300ms ease;
+}
+.button:hover {
+  background: #36a379;
+}
