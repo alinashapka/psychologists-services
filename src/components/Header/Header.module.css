@@ -65,10 +65,10 @@
   width: 135px;
   height: 48px;
   margin-left: 28px;
+  background: none;
   border: 1px solid rgba(25, 26, 21, 0.2);
 }
 .loginBtn {
-  color: var(--color-text);
   border-radius: 30px;
   padding: 14px 39px;
   width: 124px;
