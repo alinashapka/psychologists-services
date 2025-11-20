@@ -26,6 +26,9 @@
   flex-direction: column;
   gap: 18px;
 }
+.wrapper {
+  position: relative;
+}
 .input {
   width: 438px;
   border: 1px solid rgba(25, 26, 21, 0.1);
@@ -51,4 +54,15 @@
 }
 .button:hover {
   background: #36a379;
+}
+.iconBtn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  padding: 0;
+  background: none;
+}
+.icon {
+  fill: none;
+  stroke: #191a15;
 }

@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import * as yup from "yup";
 import { loginUser } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
 import css from "./LoginForm.module.css";
+import Icon from "../Icon/Icon";
 
 const schema = yup
   .object({
@@ -26,6 +28,12 @@ function LoginForm({ onSuccess }) {
   });
 
   const dispatch = useDispatch();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword((prevPass) => !prevPass);
+  };
 
   const onSubmit = async (data) => {
     try {
@@ -63,10 +71,21 @@ function LoginForm({ onSuccess }) {
         <div className={css.wrapper}>
           <input
             className={css.input}
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
             {...register("password")}
           />{" "}
+          <button
+            type="button"
+            onClick={togglePassword}
+            className={css.iconBtn}
+          >
+            {showPassword ? (
+              <Icon id="eye" size={20} className={css.icon} />
+            ) : (
+              <Icon id="eye-off" size={20} className={css.icon} />
+            )}
+          </button>
           {errors.password && <p>{errors.password.message}</p>}
         </div>
       </div>
