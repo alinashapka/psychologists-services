@@ -23,6 +23,32 @@
   color: rgba(25, 26, 21, 0.5);
   margin-bottom: 40px;
 }
+.psychologistCard {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.psychologistAvatar {
+  border-radius: 15px;
+  width: 44px;
+  height: 44px;
+}
+.psychologistInfo {
+}
+.psychologistLabel {
+  margin-bottom: 4px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 12px;
+  line-height: 133%;
+  color: #8a8a89;
+}
+.psychologistName {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  line-height: 150%;
+}
 .container {
   display: flex;
   flex-direction: column;

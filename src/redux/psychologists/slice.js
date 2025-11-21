@@ -4,6 +4,7 @@ import { handlePending, handleError } from "../../utils/reduxUtils";
 
 const initialState = {
   items: [],
+  currentPsych: null,
   displayedCount: 3,
   isLoading: false,
   error: null,
@@ -15,6 +16,12 @@ const psychologistsSlice = createSlice({
   reducers: {
     loadMore: (state) => {
       state.displayedCount += 3;
+    },
+    setCurrentPsych: (state, action) => {
+      state.currentPsych = action.payload;
+    },
+    clearCurrentPsych: (state) => {
+      state.currentPsych = null;
     },
   },
   extraReducers: (builder) => {
@@ -28,5 +35,6 @@ const psychologistsSlice = createSlice({
   },
 });
 
-export const { loadMore } = psychologistsSlice.actions;
+export const { loadMore, setCurrentPsych, clearCurrentPsych } =
+  psychologistsSlice.actions;
 export default psychologistsSlice.reducer;

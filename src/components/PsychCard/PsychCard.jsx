@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Icon from "../Icon/Icon";
 import Modal from "../Modal/Modal";
 import MakeAppForm from "../MakeAppForm/MakeAppForm";
+import {
+  setCurrentPsych,
+  clearCurrentPsych,
+} from "../../redux/psychologists/slice";
 import css from "./PsychCard.module.css";
 
 function PsychCard({
@@ -16,15 +21,23 @@ function PsychCard({
   reviews = [],
   specialization,
 }) {
+  const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleReadMore = () => {
     setIsExpanded(!isExpanded);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const openModal = () => {
+    dispatch(setCurrentPsych(name));
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    dispatch(clearCurrentPsych());
+    setIsOpen(false);
+  };
 
   return (
     <>

@@ -1,10 +1,14 @@
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { formatPhone } from "../../utils/formatPhone";
-import css from "./MakeAppForm.module.css";
 import Icon from "../Icon/Icon";
+import { useSelector } from "react-redux";
+import { selectCurrentPsych } from "../../redux/psychologists/selectors";
+import css from "./MakeAppForm.module.css";
 
 function MakeAppForm({ onSuccess }) {
+  const psychologist = useSelector(selectCurrentPsych);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,6 +43,8 @@ function MakeAppForm({ onSuccess }) {
       time: null,
       comment: "",
     });
+
+    onSuccess();
   };
 
   const generateTimeSlots = () => {
@@ -74,6 +80,21 @@ function MakeAppForm({ onSuccess }) {
         short form below to book your personal appointment with a professional
         psychologist. We guarantee confidentiality and respect for your privacy.
       </p>
+
+      {psychologist && (
+        <div className={css.psychologistCard}>
+          <img
+            src={psychologist.avatar_url}
+            alt={psychologist.name}
+            className={css.psychologistAvatar}
+          />
+          <div className={css.psychologistInfo}>
+            <p className={css.psychologistLabel}>Your psychologist</p>
+            <p className={css.psychologistName}>{psychologist.name}</p>
+          </div>
+        </div>
+      )}
+
       <div className={css.container}>
         <input
           className={css.input}
