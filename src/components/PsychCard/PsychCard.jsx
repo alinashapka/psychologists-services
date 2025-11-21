@@ -89,7 +89,7 @@ function PsychCard({
                         <p className={css.reviewerName}>{review.reviewer}</p>
                         <p className={css.reviewRating}>
                           <Icon className={css.star} id="star" size={16} />{" "}
-                          {review.rating}
+                          {review.rating.toFixed(1)}
                         </p>
                       </div>
                     </div>
