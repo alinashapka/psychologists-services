@@ -1,50 +1,57 @@
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { formatPhone } from "../../utils/formatPhone";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import Icon from "../Icon/Icon";
 import { useSelector } from "react-redux";
 import { selectCurrentPsych } from "../../redux/psychologists/selectors";
 import css from "./MakeAppForm.module.css";
 
+const schema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  phoneNumber: yup
+    .string()
+    .required("Phone number is required")
+    .min(13, "Phone number must be at least 13 characters"),
+  time: yup.string().required("Please select a time"),
+  comment: yup.string(),
+});
+
 function MakeAppForm({ onSuccess }) {
   const psychologist = useSelector(selectCurrentPsych);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    time: null,
-    comment: "",
-  });
+  const [showTimeDropdown, setShowTimeDropdown] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "phoneNumber") {
-      setFormData((prev) => ({
-        ...prev,
-        phoneNumber: formatPhone(value),
-      }));
-      return;
-    }
-
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    toast.success("Form sent!");
-
-    setFormData({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+    watch,
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
       name: "",
       email: "",
       phoneNumber: "",
-      time: null,
+      time: "",
       comment: "",
-    });
+    },
+  });
 
-    onSuccess();
+  const phoneNumber = watch("phoneNumber");
+  const time = watch("time");
+
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhone(e.target.value);
+    setValue("phoneNumber", formatted);
   };
 
   const generateTimeSlots = () => {
@@ -60,16 +67,22 @@ function MakeAppForm({ onSuccess }) {
     return times;
   };
 
-  const [showTimeDropdown, setShowTimeDropdown] = useState(false);
   const timeSlots = generateTimeSlots();
 
-  const handleTimeSelect = (time) => {
-    setFormData((prev) => ({ ...prev, time }));
+  const handleTimeSelect = (slot) => {
+    setValue("time", slot);
     setShowTimeDropdown(false);
   };
 
+  const onSubmit = (data) => {
+    console.log("Form data:", data);
+    toast.success("Form sent!");
+    reset();
+    onSuccess();
+  };
+
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
+    <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={css.title}>
         Make an appointment
         <br />
@@ -96,34 +109,37 @@ function MakeAppForm({ onSuccess }) {
       )}
 
       <div className={css.container}>
-        <input
-          className={css.input}
-          name="name"
-          type="text"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <div className={css.wrapper}>
+        <div>
           <input
             className={css.input}
-            type="tel"
-            name="phoneNumber"
-            placeholder="+380"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            required
+            type="text"
+            placeholder="Name"
+            {...register("name")}
           />
+          {errors.name && <p className={css.error}>{errors.name.message}</p>}
+        </div>
+        <div className={css.wrapper}>
+          <div>
+            <input
+              className={css.inputNumb}
+              type="tel"
+              placeholder="+380"
+              value={phoneNumber}
+              onChange={handlePhoneChange}
+            />
+            {errors.phoneNumber && (
+              <p className={css.error}>{errors.phoneNumber.message}</p>
+            )}
+          </div>
           <div className={css.timeWrapper}>
             <input
               className={css.input}
               type="text"
-              name="time"
               placeholder="00:00"
-              value={formData.time || ""}
+              value={time}
               readOnly
               onClick={() => setShowTimeDropdown(!showTimeDropdown)}
+              {...register("time")}
             />
 
             <Icon className={css.icon} id="clock" size={20} />
@@ -142,24 +158,26 @@ function MakeAppForm({ onSuccess }) {
                 ))}
               </div>
             )}
+            {errors.time && <p className={css.error}>{errors.time.message}</p>}
           </div>
         </div>
-        <input
-          className={css.input}
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <textarea
-          className={css.textarea}
-          name="comment"
-          placeholder="Comment"
-          value={formData.comment}
-          onChange={handleChange}
-        />
+        <div>
+          <input
+            className={css.input}
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+          />
+          {errors.email && <p className={css.error}>{errors.email.message}</p>}
+        </div>
+
+        <div>
+          <textarea
+            className={css.textarea}
+            placeholder="Comment"
+            {...register("comment")}
+          />
+        </div>
 
         <button className={css.button} type="submit">
           Send

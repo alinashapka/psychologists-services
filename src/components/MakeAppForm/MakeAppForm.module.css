@@ -55,6 +55,7 @@
   gap: 16px;
 }
 .input {
+  width: 472px;
   border: 1px solid rgba(25, 26, 21, 0.1);
   border-radius: 12px;
   padding: 16px 0 16px 18px;
@@ -69,12 +70,20 @@
   display: flex;
   gap: 8px;
 }
-.wrapper > .input {
-  width: calc(50% - 4px);
+.inputNumb {
+  width: 232px;
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 0 16px 18px;
   box-sizing: border-box;
 }
+.inputNumb::placeholder {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: #191a15;
+}
 .wrapper > .timeWrapper {
-  width: calc(50% - 4px);
+  width: 232px;
 }
 .timeWrapper {
   position: relative;
@@ -122,9 +131,11 @@
   color: #191a15;
 }
 .textarea {
+  width: 472px;
   border: 1px solid rgba(25, 26, 21, 0.1);
   border-radius: 12px;
   padding: 16px 0 80px 18px;
+  box-sizing: border-box;
 }
 .textarea::placeholder {
   font-family: var(--font-family);
