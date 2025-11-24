@@ -1,6 +1,8 @@
 import css from "./HomePage.module.css";
 import { useNavigate } from "react-router-dom";
 import Icon from "../../components/Icon/Icon";
+import hero from "../../assets/hero.jpg";
+import hero2x from "../../assets/hero@2x.jpg";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -27,8 +29,8 @@ function HomePage() {
       <div className={css.imageBlock}>
         <div className={css.imageWrapper}>
           <img
-            src="/src/assets/hero.jpg"
-            srcSet="/src/assets/hero.jpg 1x, /src/assets/hero@2x.jpg 2x"
+            src={hero}
+            srcSet={`${hero} 1x, ${hero2x} 2x`}
             className={css.image}
             alt="Psychologist"
           />
