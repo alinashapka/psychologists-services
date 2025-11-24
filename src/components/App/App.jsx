@@ -5,7 +5,7 @@ import Loader from "../Loader/Loader";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
+import css from "./App.module.css";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
 const PsychPage = lazy(() => import("../../pages/PsychPage/PsychPage.jsx"));
@@ -19,7 +19,13 @@ const NotFoundPage = lazy(() =>
 function App() {
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense
+        fallback={
+          <div className={css.loader}>
+            <Loader />
+          </div>
+        }
+      >
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />

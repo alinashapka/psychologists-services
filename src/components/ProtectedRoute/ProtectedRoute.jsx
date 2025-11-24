@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { selectIsLoading, selectIsLoggedIn } from "../../redux/auth/selectors";
 import Loader from "../Loader/Loader";
+import css from "./ProtectedRoute.module.css";
 
 const ProtectedRoute = ({ children }) => {
   const location = useLocation();
@@ -9,7 +10,11 @@ const ProtectedRoute = ({ children }) => {
   const isLoading = useSelector(selectIsLoading);
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className={css.loader}>
+        <Loader />
+      </div>
+    );
   }
 
   if (!isLoggedIn) {

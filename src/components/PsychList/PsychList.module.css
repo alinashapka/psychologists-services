@@ -1,3 +1,6 @@
+.loader {
+  justify-self: center;
+}
 .container {
   padding: 0 128px;
   padding-bottom: 100px;

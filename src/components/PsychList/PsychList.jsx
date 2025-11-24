@@ -100,7 +100,7 @@ function PsychList() {
         </ul>
 
         {isLoading && psychologists.length > 0 && (
-          <div className={css.loadMoreLoader}>
+          <div className={css.loader}>
             <Loader />
           </div>
         )}
