@@ -2,6 +2,8 @@
   padding: 0 128px;
   padding-bottom: 100px;
   margin-top: 24px;
+}
+.listWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;

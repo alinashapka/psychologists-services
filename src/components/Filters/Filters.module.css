@@ -1,0 +1,66 @@
+.filterWrapper {
+  margin-bottom: 32px;
+}
+.label {
+  margin-bottom: 8px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: 14px;
+  line-height: 129%;
+  color: #8a8a89;
+}
+.dropdown {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 14px;
+  padding: 16px 18px;
+  width: 226px;
+  background: #54be96;
+  /* margin-bottom: 8px; */
+  cursor: pointer;
+}
+.currLabel {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: #fbfbfb;
+}
+.dropdownButton {
+  background: none;
+  cursor: pointer;
+}
+.icon {
+  fill: none;
+  stroke: #fbfbfb;
+  transition: transform 300ms ease;
+}
+.iconRotated {
+  fill: none;
+  stroke: #fbfbfb;
+  transform: rotate(180deg);
+  transition: transform 300ms ease;
+}
+.dropdownMenu {
+  position: absolute;
+  top: 208px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 0;
+  padding-left: 18px;
+  border-radius: 14px;
+  width: 226px;
+  box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+  background: #fff;
+  z-index: 10;
+}
+.dropdownItem {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  color: rgba(25, 26, 21, 0.3);
+}
+.dropdownItem:hover {
+  color: #191a15;
+}
