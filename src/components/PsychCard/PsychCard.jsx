@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Icon from "../Icon/Icon";
 import Modal from "../Modal/Modal";
@@ -7,6 +7,11 @@ import {
   setCurrentPsych,
   clearCurrentPsych,
 } from "../../redux/psychologists/slice";
+import { ref, set, get } from "firebase/database";
+import { database } from "../../services/firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors";
+import { toast } from "react-toastify";
 import css from "./PsychCard.module.css";
 
 function PsychCard({
@@ -24,6 +29,51 @@ function PsychCard({
   const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const user = useSelector(selectUser);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const checkIfFavorite = async () => {
+      if (!user) return;
+
+      try {
+        const favoriteRef = ref(database, `favorites/${user.uid}/${name}`);
+        const spanshot = await get(favoriteRef);
+
+        if (spanshot.exists()) {
+          setIsFavorite(true);
+        } else {
+          setIsFavorite(false);
+        }
+      } catch (error) {
+        console.error("Error checking favorite:", error);
+      }
+    };
+    checkIfFavorite();
+  }, [user, name]);
+
+  const toggleFavorite = async () => {
+    if (!user) {
+      toast.error("Please log in to add favorites");
+      return;
+    }
+
+    try {
+      // Create a reference to: favorites/userId/psychologistName
+      const favoriteRef = ref(database, `favorites/${user.uid}/${name}`);
+
+      if (isFavorite) {
+        await set(favoriteRef, null);
+        setIsFavorite(false);
+      } else {
+        await set(favoriteRef, true);
+        setIsFavorite(true);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   const toggleReadMore = () => {
     setIsExpanded(!isExpanded);
@@ -114,8 +164,12 @@ function PsychCard({
             Price / 1 hour:{" "}
             <span className={css.priceAmount}>${price_per_hour}</span>
           </p>
-          <button className={css.favoriteBtn}>
-            <Icon className={css.heart} id="heart" size={26} />
+          <button className={css.favoriteBtn} onClick={toggleFavorite}>
+            <Icon
+              className={isFavorite ? css.heartFilled : css.heart}
+              id="heart"
+              size={26}
+            />
           </button>
         </div>
       </div>

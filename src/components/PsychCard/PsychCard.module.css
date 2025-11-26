@@ -181,6 +181,9 @@
   stroke-width: 2px;
   stroke: #191a15;
 }
+.heartFilled {
+  fill: #54be96;
+}
 .favoriteBtn {
   margin-left: 12px;
   background: none;
