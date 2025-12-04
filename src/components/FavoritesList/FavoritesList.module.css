@@ -4,6 +4,14 @@
   align-items: center;
   width: 100%;
 }
+.messageContainer {
+  padding: 0 128px;
+  padding-bottom: 100px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container {
   padding: 0 128px;
   padding-bottom: 100px;
@@ -19,10 +27,6 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-}
-.item {
-}
-.loadMoreLoader {
 }
 .button {
   margin-top: 64px;

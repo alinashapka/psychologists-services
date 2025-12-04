@@ -1,7 +1,12 @@
+import FavoritesList from "../../components/FavoritesList/FavoritesList";
 import css from "./FavoritesPage.module.css";
 
 function FavoritesPage() {
-  return <h1>Favorites Page</h1>;
+  return (
+    <>
+      <FavoritesList />
+    </>
+  );
 }
 
 export default FavoritesPage;

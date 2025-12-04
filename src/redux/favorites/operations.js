@@ -11,11 +11,10 @@ export const fetchFavorites = createAsyncThunk(
 
       if (snapshot.exists()) {
         const favoritesData = snapshot.val();
-        // favoritesData looks like: { "Dr. Sarah Davis": true, "Dr. Mark Thompson": true }
 
-        // Get just the names (keys)
-        const favoriteNames = Object.keys(favoritesData);
-        // favoriteNames = ["Dr. Sarah Davis", "Dr. Mark Thompson"]
+        const favoriteNames = Object.values(favoritesData).map(
+          (item) => item.name
+        );
 
         return favoriteNames;
       } else {

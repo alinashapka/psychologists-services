@@ -12,6 +12,8 @@ import { database } from "../../services/firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors";
 import { toast } from "react-toastify";
+import { createSafeId } from "../../utils/createSafeId";
+import { addFavorite, removeFavorite } from "../../redux/favorites/slice";
 import css from "./PsychCard.module.css";
 
 function PsychCard({
@@ -27,21 +29,24 @@ function PsychCard({
   specialization,
 }) {
   const dispatch = useDispatch();
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   const user = useSelector(selectUser);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const safeId = createSafeId(name);
 
   useEffect(() => {
     const checkIfFavorite = async () => {
-      if (!user) return;
+      if (!user || !user.uid) return;
 
       try {
-        const favoriteRef = ref(database, `favorites/${user.uid}/${name}`);
-        const spanshot = await get(favoriteRef);
+        const favoriteRef = ref(database, `favorites/${user.uid}/${safeId}`);
+        const snapshot = await get(favoriteRef);
 
-        if (spanshot.exists()) {
+        if (snapshot.exists()) {
           setIsFavorite(true);
         } else {
           setIsFavorite(false);
@@ -51,23 +56,26 @@ function PsychCard({
       }
     };
     checkIfFavorite();
-  }, [user, name]);
+  }, [user, safeId]);
 
   const toggleFavorite = async () => {
-    if (!user) {
+    if (!user || !user.uid) {
+      console.log("User from Redux:", user);
       toast.error("Please log in to add favorites");
       return;
     }
 
     try {
       // Create a reference to: favorites/userId/psychologistName
-      const favoriteRef = ref(database, `favorites/${user.uid}/${name}`);
+      const favoriteRef = ref(database, `favorites/${user.uid}/${safeId}`);
 
       if (isFavorite) {
         await set(favoriteRef, null);
+        dispatch(removeFavorite(name));
         setIsFavorite(false);
       } else {
-        await set(favoriteRef, true);
+        await set(favoriteRef, { name });
+        dispatch(addFavorite(name));
         setIsFavorite(true);
       }
     } catch (error) {
