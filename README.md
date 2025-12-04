@@ -1,4 +1,4 @@
-🧠 Psychologists.Services
+## 🧠 Psychologists.Services
 
 Find the right psychologist. Book appointments. Save your favorites.
 
@@ -7,7 +7,7 @@ Users can browse specialists, view detailed information, add psychologists to th
 
 This project is built using React, Redux Toolkit, and modern UI patterns to ensure smooth performance and a pleasant user experience.
 
-🚀 Features
+## 🚀 Features
 
 - **Browse psychologists** — List of specialists with name, avatar, specialization, experience, rating, price per hour, etc.
 - **Favorites** — Add / remove psychologists to your favorites list. Favorites persist in Firebase per user.
@@ -17,7 +17,7 @@ This project is built using React, Redux Toolkit, and modern UI patterns to ensu
 - **User authentication** — Favorites and booking available only to authenticated users.
 - **Responsive design** — Works on wide desktop layout (1440 px) and adapts to smaller screens.
 
-🔧 Installation & Setup
+## 🔧 Installation & Setup
 
 1️⃣ Clone the repository
 git clone [https://github.com/yourusername/psychologists-services.git](https://github.com/alinashapka/psychologists-services.git)
@@ -48,13 +48,13 @@ npm run build
 ├─ README.md
 └─ …
 
-📦 Deployment
+## 📦 Deployment
 
 The project is deployed on Vercel.
 
 Live demo is available at: https://psychologists-services-rouge.vercel.app
 
-🔐 Security / Auth / State
+## 🔐 Security / Auth / State
 
 Authentication handled through Firebase — only logged-in users can add favorites / book appointments.
 
@@ -62,7 +62,7 @@ Favorites are stored under user ID in Firebase: favorites/{userId}/{psychId}
 
 Global state managed via Redux Toolkit (slices, selectors, async thunks) for predictable and maintainable state
 
-👤 Author
+## 👤 Author
 
 Alina Shapka
 
