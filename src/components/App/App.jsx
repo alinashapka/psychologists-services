@@ -18,7 +18,7 @@ const NotFoundPage = lazy(() =>
 
 function App() {
   return (
-    <div className={css.appContainer}>
+    <>
       <Suspense
         fallback={
           <div className={css.loader}>
@@ -47,7 +47,7 @@ function App() {
           style={{ zIndex: 10001 }}
         />
       </Suspense>
-    </div>
+    </>
   );
 }
 
