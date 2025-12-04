@@ -20,7 +20,7 @@ This project is built using React, Redux Toolkit, and modern UI patterns to ensu
 🔧 Installation & Setup
 
 1️⃣ Clone the repository
-git clone https://github.com/yourusername/psychologists-services.git
+git clone [https://github.com/yourusername/psychologists-services.git](https://github.com/alinashapka/psychologists-services.git)
 cd psychologists-services
 
 2️⃣ Install dependencies
