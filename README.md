@@ -68,4 +68,4 @@ Alina Shapka
 
 - GitHub: [@alinashapka](https://github.com/alinashapka)
 - LinkedIn: [Alina Shapka](https://www.linkedin.com/in/alina-shapka/)
-- Email: alinkash2811@gmail.com
+- Email: alina.a.shapka@gmail.com
