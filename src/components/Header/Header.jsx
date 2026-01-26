@@ -32,7 +32,7 @@ function Header() {
   const closeModal = () => setActiveModal(null);
 
   return (
-    <>
+    <div className={css.wrapper}>
       <div className={css.container}>
         <header className={css.header}>
           <nav className={css.nav}>
@@ -93,7 +93,7 @@ function Header() {
       <Modal isOpen={activeModal === "register"} onClose={closeModal}>
         <RegistrationForm onSuccess={closeModal} />
       </Modal>
-    </>
+    </div>
   );
 }
 

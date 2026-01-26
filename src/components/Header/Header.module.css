@@ -1,8 +1,12 @@
+.wrapper {
+  width: 100%;
+  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+}
 .container {
   padding: 0 128px;
 }
 .nav {
-  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+  width: 1184px;
   display: flex;
   justify-content: space-between;
   align-items: center;
