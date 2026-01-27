@@ -75,7 +75,6 @@ function MakeAppForm({ onSuccess }) {
   };
 
   const onSubmit = (data) => {
-    console.log("Form data:", data);
     toast.success("Form sent!");
     reset();
     onSuccess();

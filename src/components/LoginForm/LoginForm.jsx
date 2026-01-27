@@ -41,7 +41,7 @@ function LoginForm({ onSuccess }) {
         loginUser({
           email: data.email,
           password: data.password,
-        })
+        }),
       ).unwrap();
       onSuccess();
       toast.success("Successfully logged in!");
@@ -53,7 +53,6 @@ function LoginForm({ onSuccess }) {
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={css.title}>Log In</h2>
-      {/* <p>X</p> */}
       <p className={css.text}>
         Welcome back! Please enter your credentials to access your account and
         continue your search for a psychologist.

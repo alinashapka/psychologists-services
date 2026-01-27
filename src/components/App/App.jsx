@@ -9,11 +9,11 @@ import css from "./App.module.css";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
 const PsychPage = lazy(() => import("../../pages/PsychPage/PsychPage.jsx"));
-const FavoritesPage = lazy(() =>
-  import("../../pages/FavoritesPage/FavoritesPage.jsx")
+const FavoritesPage = lazy(
+  () => import("../../pages/FavoritesPage/FavoritesPage.jsx"),
 );
-const NotFoundPage = lazy(() =>
-  import("../../pages/NorFoundPage/NotFoundPage.jsx")
+const NotFoundPage = lazy(
+  () => import("../../pages/NotFoundPage/NotFoundPage.jsx"),
 );
 
 function App() {

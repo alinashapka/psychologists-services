@@ -60,13 +60,11 @@ function PsychCard({
 
   const toggleFavorite = async () => {
     if (!user || !user.uid) {
-      console.log("User from Redux:", user);
       toast.error("Please log in to add favorites");
       return;
     }
 
     try {
-      // Create a reference to: favorites/userId/psychologistName
       const favoriteRef = ref(database, `favorites/${user.uid}/${safeId}`);
 
       if (isFavorite) {

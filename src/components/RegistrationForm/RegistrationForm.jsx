@@ -55,7 +55,6 @@ function RegistrationForm({ onSuccess }) {
   return (
     <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={css.title}>Registration</h2>
-      {/* <p>X</p> */}
       <p className={css.text}>
         Thank you for your interest in our platform! In order to register, we
         need some information. Please provide us with the following information.

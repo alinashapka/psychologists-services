@@ -11,7 +11,6 @@ export const fetchPsychologists = createAsyncThunk(
 
       if (snapshot.exists()) {
         const data = snapshot.val();
-        console.log("📦 Data:", data);
 
         const psychologistsArray = Object.values(data).map((item, index) => ({
           ...item,
@@ -25,5 +24,5 @@ export const fetchPsychologists = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
